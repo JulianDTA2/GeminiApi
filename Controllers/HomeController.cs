@@ -8,17 +8,11 @@ namespace GeminiApi.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
     private IAChatbotService _chatbotService;
 
-
-
-
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(IAChatbotService chatbotService)
     {
-        _logger = logger;
-        _chatbotService = new GeminiRepo();
+        _chatbotService = chatbotService;
     }
 
     public async Task<IActionResult> Index()
@@ -27,5 +21,4 @@ public class HomeController : Controller
         ViewBag.respuesta = response;
         return View();
     }
-
 }
